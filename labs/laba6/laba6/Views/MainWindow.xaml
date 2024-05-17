@@ -1,0 +1,76 @@
+﻿<Window x:Class="laba6.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:laba6"
+        xmlns:vm="clr-namespace:laba6.ViewModels"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="400" Width="800">
+    
+    <Window.DataContext>
+        <!--<vm:PeopleViewModelSimple />-->
+        <vm:PeopleViewModelMVVM />
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="7*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <ListBox ItemsSource="{Binding People}" SelectedItem="{Binding SelectedPerson}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Id}"/>
+
+                        <TextBlock Text=")"/>
+                        <TextBlock Text="{Binding Name}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Column="1" DataContext="{Binding SelectedPerson}">
+            <TextBlock Text="Selected Person: "></TextBlock>
+
+            <TextBlock Text="Id:"/>
+            <TextBox IsReadOnly="True" Text="{Binding Id}"/>
+            <TextBlock Text="Name:"/>
+            <TextBox x:Name="NameTb" Text="{Binding Name}"/>
+            <TextBlock Text="BirthDate:"/>
+            <TextBox x:Name="BirthTb" Text="{Binding BirthDate}"/>
+            <TextBlock Text="Description"/>
+            <TextBox x:Name="DescTb" Text="{Binding Desc}"/>
+        </StackPanel>
+
+        <Button Grid.Row="1" Content="Show In New Window" Command="{Binding ShowWindowCommand}"/>
+        <Button Grid.Row="1" Grid.Column="1" Content="Change Selected Item" Command="{Binding ChangeItemCommand}"/>
+
+        <Button Grid.Row="2" Content="Push New Item" Command="{Binding PushItemCommand}"/>
+        <Button Grid.Row="2" Grid.Column="1" Content="Pop Last Item" Command="{Binding PopItemCommand}"/>
+        
+        <Grid Grid.Row="3" Grid.ColumnSpan="2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Content="Begin" Command="{Binding BeginProcessCommand}"/>
+            <Button Grid.Column="1" Content="Reset" Command="{Binding ResetProcessCommand}"/>
+            <Button Grid.Column="3" Content="Stop" Command="{Binding StopProcessCommand}"/>
+        </Grid>
+
+        <ProgressBar Grid.Row="4" Grid.ColumnSpan="2" Value="{Binding SelectedPerson.PercentDone, Mode=TwoWay}" Maximum="100" />
+        
+    </Grid>
+</Window>

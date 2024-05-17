@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Control\MaterialContr.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Control\ProductContr.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Form\MaterialCustomWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Form\MaterialWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Form\ProductCustomWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Form\ProductWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Control\MaterialContr.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Control\ProductContr.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Form\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Form\MaterialCustomWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Form\MaterialWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Form\ProductCustomWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Form\ProductWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

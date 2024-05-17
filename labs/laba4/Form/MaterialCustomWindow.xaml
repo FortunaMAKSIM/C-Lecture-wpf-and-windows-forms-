@@ -1,0 +1,38 @@
+﻿<Window x:Class="laba4.Form.MaterialCustomWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:laba4.Form"
+        xmlns:local1="clr-namespace:laba4.Control"
+        mc:Ignorable="d"
+        Title="MaterialCustomWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        
+        <Button Command="{Binding SaveCommand}" Margin="5">Сохранить</Button>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <ItemsControl x:Name="MaterialsControl" ItemsSource="{Binding Materials}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <local1:MaterialContr
+                    Id="{Binding Id}"
+                    Title="{Binding Title}"
+                    Margin="5"
+                    BorderBrush="Black"
+                    BorderThickness="2"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</Window>
